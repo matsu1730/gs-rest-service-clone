@@ -34,6 +34,17 @@ public class GreetingControllerTests {
 	@Autowired
 	private MockMvc mockMvc;
 
+	/*
+	Este método é um teste unitário em Java usando o framework Spring Boot. 
+	Ele verifica se a API de saudação (/greeting) está funcionando corretamente quando não há parâmetros fornecidos. Aqui está uma explicação detalhada:
+
+	@Test: Indica que este é um método de teste.
+	public void noParamGreetingShouldReturnDefaultMessage() throws Exception: Define o método de teste que não aceita parâmetros e pode lançar uma exceção.
+	this.mockMvc.perform(get("/greeting")): Simula uma requisição HTTP GET para o endpoint /greeting.
+	andDo(print()): Imprime os detalhes da requisição e resposta no console para fins de depuração.
+	andExpect(status().isOk()): Verifica se o status da resposta HTTP é 200 (OK).
+	andExpect(jsonPath("$.content").value("Hello, World!")): Verifica se o campo content no JSON da resposta contém o valor "Hello, World!".
+	*/
 	@Test
 	public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
 
@@ -41,6 +52,17 @@ public class GreetingControllerTests {
 				.andExpect(jsonPath("$.content").value("Hello, World!"));
 	}
 
+	/*
+	Este método é um teste unitário em Java usando o framework Spring Boot. 
+	Ele verifica se a API de saudação (/greeting) retorna uma mensagem personalizada quando um parâmetro é fornecido. Aqui está uma explicação detalhada:
+
+	@Test: Indica que este é um método de teste.
+	public void paramGreetingShouldReturnTailoredMessage() throws Exception: Define o método de teste que não aceita parâmetros e pode lançar uma exceção.
+	this.mockMvc.perform(get("/greeting").param("name", "Spring Community")): Simula uma requisição HTTP GET para o endpoint /greeting com um parâmetro de consulta name definido como "Spring Community".
+	andDo(print()): Imprime os detalhes da requisição e resposta no console para fins de depuração.
+	andExpect(status().isOk()): Verifica se o status da resposta HTTP é 200 (OK).
+	andExpect(jsonPath("$.content").value("Hello, Spring Community!")): Verifica se o campo content no JSON da resposta contém o valor "Hello, Spring Community!".
+	*/
 	@Test
 	public void paramGreetingShouldReturnTailoredMessage() throws Exception {
 
