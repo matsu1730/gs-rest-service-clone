@@ -34,6 +34,10 @@ public class GreetingControllerTests {
 	@Autowired
 	private MockMvc mockMvc;
 
+	/*
+	Este método verifica se a resposta da requisição no endpoint /greeting é 200 e se o conteúdo é "Hello, World!"
+	E não passa nenhum parâmetro na requisição
+	*/
 	@Test
 	public void noParamGreetingShouldReturnDefaultMessage() throws Exception {
 
@@ -41,6 +45,10 @@ public class GreetingControllerTests {
 				.andExpect(jsonPath("$.content").value("Hello, World!"));
 	}
 
+	/*
+	Este método verifica se a resposta da requisição no endpoint /greeting é 200 e se o conteúdo é "Hello, Spring Community!"
+	De acordo com o parâmetro "Spring Community" passado na requisição
+	*/
 	@Test
 	public void paramGreetingShouldReturnTailoredMessage() throws Exception {
 
@@ -48,5 +56,4 @@ public class GreetingControllerTests {
 				.andDo(print()).andExpect(status().isOk())
 				.andExpect(jsonPath("$.content").value("Hello, Spring Community!"));
 	}
-
 }
